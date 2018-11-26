@@ -7,5 +7,5 @@ How to run:
 * rake db:seed
 * rails s
 
-Cronjob:
+Cronjob for hourle refreshing currency rates:
 * whenever --update
