@@ -1,0 +1,19 @@
+<% if @usd_stats.present? %>
+  <div> USD Buy rates </div>
+  <div> Average buy value: <%= CurrencyRate.buy_average_of('USD') %> </div>
+  <%= line_chart @usd_stats.group_by_hour(:created_at).maximum(:buy), min: @usd_stats.minimum(:buy) - 2, max: @usd_stats.maximum(:buy) + 2, label: 'USD Buy rates' %>
+
+  <div> USD Sell rates </div>
+  <div> Average buy value: <%= CurrencyRate.sell_average_of('USD') %> </div>
+  <%= line_chart @usd_stats.group_by_hour(:created_at).maximum(:sell), min: @usd_stats.minimum(:sell) - 2, max: @usd_stats.maximum(:sell) + 2, label: 'USD Sell rates' %>
+<% end %>
+
+<% if @usd_stats.present? %>
+  <div> EUR Buy rates </div>
+  <div> Average buy value: <%= CurrencyRate.buy_average_of('EUR') %> </div>
+  <%= line_chart @eur_stats.group_by_hour(:created_at).maximum(:buy), min: @eur_stats.minimum(:buy) - 2, max: @eur_stats.maximum(:buy) + 2, label: 'EUR Buy rates' %>
+
+  <div> EUR Sell rates </div>
+  <div> Average buy value: <%= CurrencyRate.buy_average_of('EUR') %> </div>
+  <%= line_chart @eur_stats.group_by_hour(:created_at).maximum(:sell), min: @eur_stats.minimum(:sell) - 2, max: @eur_stats.maximum(:sell) + 2, label: 'EUR Sell rates' %>
+<% end %>
